@@ -1,0 +1,79 @@
+====================================
+   Common Component in JS Start
+====================================
+
+import React from "react";
+
+const InputBox = ({ type = "text", placeholder, className, onChange }) => {
+  return (
+    <input
+      type={type}
+      placeholder={placeholder}
+      className={className}
+      onChange={onChange}
+    />
+  );
+};
+
+const Button = ({ className, onClick, children }) => {
+  return (
+    <button
+      className={`h-20 min-w-48 p-2 bg-blue-950 text-white text-2xl font-bold rounded-2xl mb-3 ${
+        className || ""
+      }`}
+      onClick={onClick} 
+    > 
+      {children}
+    </button>
+  );
+};
+
+export { Button, InputBox };
+
+
+====================================
+    Common Component in JS End
+====================================
+
+
+=====================================
+    Call Common Component Start
+=====================================
+
+import React, { useState } from "react";
+import { Button, InputBox } from "../components/Button";
+
+const HomePage = () => {
+  const [enteredName, setEnteredName] = useState("");
+
+  console.log("Entered Value==> ", enteredName);
+
+  return (
+    <div className="p-4 flex flex-col">
+      <Button
+        label="Click Here"
+        onClick={() => console.log("Click on First Button !")}
+      />
+    
+      <Button
+        className={""}
+        onClick={() => console.log("Click on Second Button!")}
+      >
+        <>
+          <p>sdksajdksjalkdjsaldjlajsldkjas</p>
+        </>
+      </Button>
+      <InputBox
+        className="border-2 border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-950"
+        placeholder="Enter your name..."
+        onChange={(e) => setEnteredName(e.target.value)}
+      />
+    </div>
+  );
+};
+
+export default HomePage;
+
+=====================================
+      Call Common Component End
+=====================================
